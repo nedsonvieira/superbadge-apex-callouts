@@ -1,4 +1,4 @@
-# Apex Callouts Specialist – Superbadge
+# Apex Callouts – Superbadge
 
 Este projeto foi desenvolvido como parte da **Superbadge Apex Callouts Specialist** do Trailhead, plataforma oficial de aprendizado da Salesforce. O desafio simula um cenário realista de integrações REST e SOAP para automatizar processos internos de bem-estar e acessibilidade na empresa fictícia *Alignment Accounting*.
 
