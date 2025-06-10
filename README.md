@@ -1,18 +1,72 @@
-# Salesforce DX Project: Next Steps
+# Apex Callouts Specialist – Superbadge
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Este projeto foi desenvolvido como parte da **Superbadge Apex Callouts Specialist** do Trailhead, plataforma oficial de aprendizado da Salesforce. O desafio simula um cenário realista de integrações REST e SOAP para automatizar processos internos de bem-estar e acessibilidade na empresa fictícia *Alignment Accounting*.
 
-## How Do You Plan to Deploy Your Changes?
+## 📘 Contexto
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+A empresa promove o bem-estar dos colaboradores por meio do app **Balanced Living**, incentivando a participação em atividades saudáveis. O projeto envolve:
 
-## Configure Your Salesforce DX Project
+- Recompensar automaticamente funcionários com base na participação recorrente.
+- Realizar o faturamento de serviços de acessibilidade para workshops com intérpretes de ASL.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## 📌 Requisitos do Negócio
 
-## Read All About It
+### 1. Gestão de Recompensas (REST API)
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+- Identificar usuários que completaram **12 ou mais** atividades no trimestre.
+- Enviar dados dos usuários elegíveis para uma API externa (via HTTP POST).
+- Garantir segurança com uso de **Named Credential**.
+- Implementar e testar com mock de callout.
+
+### 2. Faturamento de Acessibilidade (SOAP API)
+
+- Criar registro de projeto de acessibilidade ao marcar workshops como acessíveis.
+- Realizar chamada SOAP para a seguradora com credenciais seguras.
+- Simular o envio de dados via proxy gerado por **WSDL**.
+- Validar chamadas e respostas com classe mock.
+
+## 🛠️ Componentes Desenvolvidos
+
+### Apex Classes
+
+- `WellnessJourneyRewardsBatch`: Classe batch que identifica usuários elegíveis e executa callout REST.
+- `RewardsCalloutService`: Realiza a chamada HTTP com JSON serializado.
+- `AccessibilityProjectBilling`: Envia dados de faturamento por SOAP para seguradora.
+- `BillingServiceProxy`: Classe gerada via WSDL para chamada SOAP.
+
+### Test Classes
+
+- `RewardsCalloutServiceTest`: Testes para callout REST com sucesso e falha.
+- `BillingCalloutServiceTest`: Testes da integração SOAP usando mock service.
+- `WellnessJourneyRewardsBatchTest`: Validação da lógica de elegibilidade e envio.
+- `RewardsCalloutServiceMock` e `BillingCalloutServiceMock`: Simulam respostas externas.
+
+## ✅ Cobertura de Testes
+
+- Cobertura de código superior a **90%**.
+- Simulações abrangentes para cenários de sucesso, falha e dados inválidos.
+- Validação de formatação de JSON e tratamento de respostas.
+
+## 🔐 Segurança
+
+- Utilização de **Named Credentials** e **External Credentials**.
+- Nenhuma informação sensível hardcoded.
+- Simulação segura com classes mockadas.
+
+## 📎 Observações
+
+- Projeto executado no ambiente **Salesforce Developer Edition**.
+- SOAP Proxy gerado manualmente via importação do WSDL.
+- Testado com registros de atividades trimestrais simuladas.
+
+## 🌐 Referência
+
+[Superbadge - Apex Callouts Specialist (Trailhead)](https://trailhead.salesforce.com/pt-BR/content/learn/superbadges/superbadge-apex-callouts-sbu)
+
+---
+
+## 🧑‍💻 Autor
+
+**Nedson Vieira do Nascimento**  
+Salesforce Developer | Trailhead Ranger  
+[LinkedIn](https://www.linkedin.com/in/nedson-vieira/) | [Trailblazer.me](https://www.salesforce.com/trailblazer/qnc912aeuektcnhbvp)
